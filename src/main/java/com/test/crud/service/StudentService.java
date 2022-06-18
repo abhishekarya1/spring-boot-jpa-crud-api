@@ -3,11 +3,8 @@ package com.test.crud.service;
 import com.test.crud.entity.Student;
 import com.test.crud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.sql.SQLException;
 import java.util.List;
 
 @Service
