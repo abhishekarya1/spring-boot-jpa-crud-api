@@ -19,8 +19,8 @@ public class StudentRepositoryTest {
 
     @Test
     void testFindNameByIgnoreCase(){
-        List<Student> list= List.of(new Student(Long.valueOf(1), "John", 20));
-        when(repository.findByNameIgnoreCase(Mockito.anyIn())).thenReturn(list);
+        List<Student> list= List.of(new Student(1L, "John", 20));
+        when(repository.findByNameIgnoreCase(Mockito.anyString())).thenReturn(list);
         assertEquals(repository.findByNameIgnoreCase("test").get(0).getName(), list.get(0).getName());
     }
 }
