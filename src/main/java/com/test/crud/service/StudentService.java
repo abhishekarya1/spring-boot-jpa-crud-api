@@ -4,7 +4,10 @@ import com.test.crud.entity.Student;
 import com.test.crud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -21,8 +24,10 @@ public class StudentService {
         return studentRepository.findByNameIgnoreCase(name);
     }
 
-    public Student addStudent(Student s) {
+    @Transactional(rollbackFor = { SQLException.class })
+    public Student addStudent(Student s) throws SQLException {
         return studentRepository.save(s);
+//        throw new SQLException();
     }
 
     public void removeStudent(Long id) {
@@ -41,3 +46,5 @@ public class StudentService {
         studentRepository.save(sdb);
     }
 }
+
+
